@@ -17,20 +17,9 @@ end
 local shell = debug.getinfo(2) == nil or (debug.getinfo(2).source == "=[C]" and debug.getinfo(3) == nil)
 local location = ...
 local path = debug.getinfo(1, "S").source:sub(2)
-local init
-if shell or location then
-    -- use require when possible
-
-    local dir = (location and path_parent(location)) or ""
-    init = require(dir .. "dtenv/init")
-    require(dir .. "dtenv/stingray")
-else
-    -- fallback if loaded with dofile()
-
-    local dir = path_parent(path)
-    init = dofile(dir .. "dtenv/init.lua")
-    dofile(dir .. "dtenv/stingray.lua")
-end
+local dir = path_parent(path)
+local init = dofile(dir .. "dtenv/init.lua")
+dofile(dir .. "dtenv/stingray.lua")
 
 if shell then
     -- started from shell
