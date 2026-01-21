@@ -31,6 +31,13 @@ local distance = 0
 local auto_completed_action = nil
 local stagger_impact = nil
 
+local attacker_buff_extension = nil
+local stagger_impact_bonus = nil
+local attacking_unit_or_nil = nil
+local attacking_unit_owner_unit_or_nil = nil
+local attacker_owner_buff_extension = nil
+local target_index = nil
+
 local armor_type = ArmorSettings.types.player
 local damage_type = "burning"
 local breed = Breeds.human
@@ -47,6 +54,7 @@ function calc_damage(damage_profile, power_level)
         power_level,
         charge_level,
         breed_or_nil,
+        attacker_owner_breed_or_nil,
         attacker_breed_or_nil,
         is_critical_strike,
         hit_weakspot,
@@ -57,6 +65,7 @@ function calc_damage(damage_profile, power_level)
         attack_type,
         attacker_stat_buffs,
         target_stat_buffs,
+        attacker_buff_extension,
         target_buff_extension,
         armor_penetrating,
         target_health_extension,
@@ -68,7 +77,12 @@ function calc_damage(damage_profile, power_level)
         distance,
         target_unit,
         auto_completed_action,
-        stagger_impact
+        stagger_impact,
+        stagger_impact_bonus,
+        attacking_unit_or_nil,
+        attacking_unit_owner_unit_or_nil,
+        attacker_owner_buff_extension,
+        target_index
     )
     return damage
 end

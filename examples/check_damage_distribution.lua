@@ -43,6 +43,14 @@ local stagger_impact = nil
 local breed_or_nil = nil
 local attacker_breed_or_nil = nil
 
+local attacker_owner_breed_or_nil = nil
+local attacker_buff_extension = nil
+local stagger_impact_bonus = nil
+local attacking_unit_or_nil = nil
+local attacking_unit_owner_unit_or_nil = nil
+local attacker_owner_buff_extension = nil
+local target_index = nil
+
 local damage_type = "burning"
 local power_level = PowerLevelSettings.default_power_level
 
@@ -107,6 +115,7 @@ function calc_damage(
         power_level,
         charge_level,
         Breeds.chaos_newly_infected,--{ armor_type = armor_type },--breed_or_nil,
+        attacker_owner_breed_or_nil,
         attacker_breed_or_nil,
         is_critical_strike,
         hit_weakspot,
@@ -117,6 +126,7 @@ function calc_damage(
         attack_type,
         attacker_stat_buffs,
         target_stat_buffs,
+        attacker_buff_extension,
         target_buff_extension,
         armor_penetrating,
         target_health_extension,
@@ -128,7 +138,12 @@ function calc_damage(
         distance,
         target_unit,
         auto_completed_action,
-        stagger_impact
+        stagger_impact,
+        stagger_impact_bonus,
+        attacking_unit_or_nil,
+        attacking_unit_owner_unit_or_nil,
+        attacker_owner_buff_extension,
+        target_index
     )
     return damage
 end

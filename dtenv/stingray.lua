@@ -226,3 +226,6 @@ World = World or FakeTable("World")
 World.get_data = rawget(World, "get_data") or function(t, str) return wget_data[str] or {} end
 
 Wwise = Wwise or FakeTable("Wwise")
+
+-- 2026/01/20
+Gui2 = Gui2 or FakeTable("Gui2")

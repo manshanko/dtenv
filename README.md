@@ -11,7 +11,7 @@ See [`examples`](https://github.com/manshanko/dtenv/blob/main/examples) for code
 To run `examples/flamer.lua`:
 ```
 set DARKTIDE_LUA=<path to darktide source or bytecode>
-luajit test.lua flamer
+luajit dtenv.lua flamer
 ```
 
 ## Setup
@@ -20,7 +20,7 @@ Get the [Darktide decompiled source code](https://github.com/Aussiemon/Darktide-
 
 Load dtenv with `dofile`:
 ```lua
-local dtenv = dofile(DTENV_PATH_LUA)
+local dtenv = dofile(DTENV_PATH .. "/dtenv.lua")
 dtenv.init(DARKTIDE_LUA)
 ```
 
@@ -32,10 +32,11 @@ local dtenv = require("dtenv")
 dtenv.init(DARKTIDE_LUA)
 ```
 
-[Exported lua bytecode](https://github.com/manshanko/limn) can be loaded if using a luajit built with gc64 disabled.
+[Exported lua bytecode](https://github.com/manshanko/limn) can be loaded if using a luajit built with gc64 enabled.
+For older version of Darktide before [No Man's Land](https://store.steampowered.com/news/app/1361210/view/508472441549357793) loading lua bytecode requires luajit built with gc64 disabled.
 
 ## JIT
 
 If performance is a concern then make sure to benchmark with luajit's JIT turned off (`jit.off()`).
-With default JIT settings `check_damage_distribution` is faster with JIT off.
+Using default JIT settings `check_damage_distribution` is faster with JIT off.
 dtenv sets `maxirconst=100` to improve that case, but other code paths may have slowdowns when JIT is on.
